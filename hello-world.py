@@ -1,14 +1,5 @@
-import numpy as np
-import matplotlib.pyplot as plt
+from datetime import datetime
 
-print("hello planet")
+time_today = datetime.now()
 
-for i in range(4):
-    print(i)
-
-x = np.arange(0, 2*np.pi, 0.1)
-y = np.sin(x)
-
-plt.plot(x, y)
-plt.title('test')
-plt.show()
+print("hello world on {}".format(datetime.strftime(time_today, "%d-%m-%Y")))
