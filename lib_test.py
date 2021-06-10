@@ -7,7 +7,7 @@ class TestIncreaseDecrease(unittest.TestCase):
     def test_increse(self):
         self.assertEqual(increase(2), 3)
 
-    def test_isupper(self):
+    def test_decrease(self):
         self.assertEqual(decrease(2), 1)
 
     def test_exception(self):
