@@ -4,9 +4,13 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
-import pandas as pd
 
 from dash.dependencies import Input, Output
+
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 # Style dicts
 colors = {
@@ -27,8 +31,6 @@ text_style = {
     'marginRight': 'auto'
 }
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
 # Useful functions
 
 
@@ -46,18 +48,15 @@ def generate_table(dataframe, style_param, max_rows=5):
         style=style_param
     )
 
-
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 # Europe dataframe and static figure
 df_europe = px.data.gapminder().query("continent == 'Europe'")
 df_europe.drop(columns=['continent', 'iso_num'], inplace=True)
 
 fig_europe = px.bar(
-    df_europe, 
-    x="pop", 
-    range_x=[0,int(8.5e7)],
-    y="country", 
+    df_europe,
+    x="pop",
+    range_x=[0, int(8.5e7)],
+    y="country",
     color="country",
     animation_frame='year')
 
@@ -119,9 +118,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']},
 
     html.Label(
         children='American Countries',
-        style={'color': colors['text'],}
+        style={'color': colors['text'], }
     ),
-
 
     dcc.Dropdown(
         options=options_americas,
